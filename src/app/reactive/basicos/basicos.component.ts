@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-basicos',
@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class BasicosComponent implements OnInit{
 
 
-  constructor( private fb: FormBuilder) { }
+  constructor( private fb: UntypedFormBuilder) { }
 
   ngOnInit(){
     this.miFormulario.reset({
@@ -27,7 +27,7 @@ export class BasicosComponent implements OnInit{
   })
   */
 
-  miFormulario: FormGroup = this.fb.group({
+  miFormulario: UntypedFormGroup = this.fb.group({
     nombre: [ , [ Validators.required, Validators.minLength(3) ] ],
     precio: [ , [ Validators.required, Validators.min(0) ] ],
     existencias: [ , [ Validators.required, Validators.min(0) ] ],

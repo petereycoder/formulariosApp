@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray, UntypedFormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
@@ -9,12 +9,12 @@ import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@ang
 })
 export class DinamicosComponent implements OnInit {
 
-  constructor( private fb: FormBuilder) { }
+  constructor( private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
   }
 
-  miFormulario: FormGroup = this.fb.group({
+  miFormulario: UntypedFormGroup = this.fb.group({
     nombre: [ '' , [Validators.required, Validators.minLength(3) ] ],
     favoritos: this.fb.array( [
       [ 'Metal Slug', Validators.required ],
@@ -22,10 +22,10 @@ export class DinamicosComponent implements OnInit {
     ], Validators.required )
   })
 
-  nuevoFavorito: FormControl = this.fb.control('', Validators.required);
+  nuevoFavorito: UntypedFormControl = this.fb.control('', Validators.required);
 
   get favoritosArray(){
-    return this.miFormulario.get('favoritos') as FormArray;
+    return this.miFormulario.get('favoritos') as UntypedFormArray;
   }
 
   campoNoEsValido( campo: string ){
